@@ -12,7 +12,7 @@ const {
 router.get("/products", allProducts);
 
 //get single product
-router.get("/products/:id", showAProduct);
+router.get("/products/:productID", showAProduct);
 
 //create a new product
 router.get("/products", createProduct);

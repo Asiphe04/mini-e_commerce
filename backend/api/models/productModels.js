@@ -13,16 +13,31 @@ const getAllProducts = (result) =>{
     })
 }
 //Get a single product
-const getProductByID = (id, result) =>{
-db.query('SELECT * FROM Products WHERE productID = ?', [id],(err, results) =>{
-    if (err){
+// const getProductByID = (productID, result) =>{
+// db.query('SELECT * FROM Products WHERE productID = ?', [productID],(err, results) =>{
+//     if (err){
+//         console.log(err);
+//         result(err, null);
+//     } else{
+//         result(null, results[0]);
+//     }
+// });
+// }
+
+const getProductByID = (productID, result) => {
+    const query = 'SELECT * FROM Products WHERE productID = ?';
+    db.query(query, [productID], (err, results) => {
+      if (err) {
+        console.log('Error executing query:', query);
         console.log(err);
         result(err, null);
-    } else{
+      } else {
         result(null, results[0]);
-    }
-});
-}
+      }
+    });
+  };
+  
+
 //Add a new product
 const insertProduct = (data, result) => {
     db.query('INSERT INTO products SET ?',data,(err, results) =>{
