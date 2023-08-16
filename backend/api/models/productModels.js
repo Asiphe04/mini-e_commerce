@@ -2,19 +2,19 @@
 import db from '../config/db';
 
 //Get products
-export const getProducts = (result) =>{
+export const getAllProducts = (result) =>{
     db.query('SELECT productID, productName, desc, price FROM products', (err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     })
 }
-//Get a signle product
-export const getProductByID = (productID, result) =>{
-db.query('SELECT productID, productName, desc, price FROM products WHERE products = ?', [productID],(err, results) =>{
+//Get a single product
+export const getProductByID = (id, result) =>{
+db.query('SELECT productID, productName, desc, price FROM products WHERE productID = ?', [id],(err, results) =>{
     if (err){
         console.log(err);
         result(err, null);
@@ -24,13 +24,13 @@ db.query('SELECT productID, productName, desc, price FROM products WHERE product
 });
 }
 //Add a new product
-export const addProduct = (data, result) => {
-    db.query('INSERT INTO products SET ?',[data],(err, results) =>{
+export const insertProduct = (data, result) => {
+    db.query('INSERT INTO products SET ?',data,(err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
         } else{
-            result(null, results);
+            result(null,results[0]);
         }
     })
 }
