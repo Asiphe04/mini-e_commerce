@@ -1,13 +1,12 @@
 // import express
-import express from "express";
-
+const express = require("express");
+const router = express.Router();
 // import functions from controller
-import {
+const {
   allProducts,
   showAProduct,
   createProduct,
-} from "../controllers/products";
-import router from "frontend/src/router";
+} = require("../controllers/products")
 
 //get all products
 router.get("/products", allProducts);
@@ -19,4 +18,4 @@ router.get("/products/:id", showAProduct);
 router.get("/products", createProduct);
 
 // export default router
-export default router;
+module.exports = router;

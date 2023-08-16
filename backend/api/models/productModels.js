@@ -1,20 +1,20 @@
 //Import database connection
-import db from '../config/db';
+const db = require('../config/db')
 
 //Get products
-export const getAllProducts = (result) =>{
-    db.query('SELECT productID, productName, desc, price FROM products', (err, results) =>{
+const getAllProducts = (result) =>{
+    db.query('SELECT * FROM Products', (err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
         } else {
-            result(null, results[0]);
+            result(null, results);
         }
     })
 }
 //Get a single product
-export const getProductByID = (id, result) =>{
-db.query('SELECT productID, productName, desc, price FROM products WHERE productID = ?', [id],(err, results) =>{
+const getProductByID = (id, result) =>{
+db.query('SELECT * FROM Products WHERE productID = ?', [id],(err, results) =>{
     if (err){
         console.log(err);
         result(err, null);
@@ -24,7 +24,7 @@ db.query('SELECT productID, productName, desc, price FROM products WHERE product
 });
 }
 //Add a new product
-export const insertProduct = (data, result) => {
+const insertProduct = (data, result) => {
     db.query('INSERT INTO products SET ?',data,(err, results) =>{
         if (err){
             console.log(err);
@@ -33,4 +33,9 @@ export const insertProduct = (data, result) => {
             result(null,results[0]);
         }
     })
+}
+module.exports = {
+    getAllProducts, 
+    getProductByID, 
+    insertProduct
 }
