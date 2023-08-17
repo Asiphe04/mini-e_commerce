@@ -20,10 +20,10 @@ export default {
 
 <style>
 
-.home-container {
-  background-color: rgba(135, 206, 235, 1);
-  width: 100%;
-}
+/* .home-container { */
+  /* background-color: rgba(135, 206, 235, 1); */
+  /* width: 100%; */
+/* } */
 
 /* .home {
   
