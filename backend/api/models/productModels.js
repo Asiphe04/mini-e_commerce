@@ -50,7 +50,7 @@ const updateProduct = (productId, data, result) => {
             result(null, results);
         }
     });
-};
+};                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 // Delete a product
 const deleteProduct = (productId, result) => {
