@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-const miniURL = "http://localhost:3000/";
+const miniURL = "https://mini-e-commerce.onrender.com/";
 export default createStore({
   state: {
     Products: null,
