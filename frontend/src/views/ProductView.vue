@@ -38,6 +38,13 @@ export default {
 } */
 .card {
   border: 1px solid white;
+  margin: 10px;
+  margin-left: 100px;
+  width: 350px;
+  
+  /* align-items: center;
+  gap: 50px; */
+  
 }
 .background {
   background-color: skyblue;
@@ -45,9 +52,9 @@ export default {
   /* padding-inline: auto; */
   flex-wrap: wrap;
 }
-.product-container {
+/* .product-container {
   background-color: white;
-}
+} */
 
 /* .product-container { */
 /* background-color: black; */
