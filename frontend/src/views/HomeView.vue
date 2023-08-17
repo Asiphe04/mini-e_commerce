@@ -1,8 +1,9 @@
 <template>
+<div class="home-container">
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img class="home-img" src="https://i.postimg.cc/ZRR9FvsB/IMG-2006.jpg" alt="">
   </div>
+</div>
 </template>
 
 <script>
@@ -16,3 +17,25 @@ export default {
   }
 }
 </script>
+
+<style>
+
+.home-container {
+  background-color: rgba(135, 206, 235, 1);
+  width: 100%;
+}
+
+/* .home {
+  
+} */
+
+.home-img {
+  width: 1200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50px;
+  align-items: center;
+  margin-left: 150px;
+}
+
+</style>
