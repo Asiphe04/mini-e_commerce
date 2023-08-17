@@ -13,16 +13,6 @@ const getAllProducts = (result) =>{
     })
 }
 //Get a single product
-// const getProductByID = (productID, result) =>{
-// db.query('SELECT * FROM Products WHERE productID = ?', [productID],(err, results) =>{
-//     if (err){
-//         console.log(err);
-//         result(err, null);
-//     } else{
-//         result(null, results[0]);
-//     }
-// });
-// }
 
 const getProductByID = (productID, result) => {
     const query = 'SELECT * FROM Products WHERE productID = ?';
@@ -49,8 +39,36 @@ const insertProduct = (data, result) => {
         }
     })
 }
+
+// Update an existing product
+const updateProduct = (productId, data, result) => {
+    db.query('UPDATE products SET ? WHERE productID = ?', [data, productId], (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+};
+
+// Delete a product
+const deleteProduct = (productId, result) => {
+    db.query('DELETE FROM products WHERE productID = ?', productId, (err, results) => {
+        if (err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+};
+
+
 module.exports = {
     getAllProducts, 
     getProductByID, 
-    insertProduct
+    insertProduct,
+    updateProduct,
+    deleteProduct
 }
