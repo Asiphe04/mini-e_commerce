@@ -26,7 +26,7 @@ export default {
 }
 
 nav {
-  padding: 30px;
+  padding: 30px; 
 }
 
 nav a {
