@@ -64,59 +64,59 @@ import axios from "axios";
 export default {
   data() {
     return {
-      // productName: '',
-      // image: '',
-      // description: '',
-      // price: '',
-      // category: '',
-       id: this.$route.params.id,
-      Product:{},
+      productName: '',
+      image: '',
+      description: '',
+      price: '',
+      category: '',
+      //  id: this.$route.params.id,
+      // Product:{},
     };
   },
   methods: {
+//     async updateProduct() {
+//   try {
+//     await axios.put(
+//       `https://mini-e-commerce.onrender.com/Products/${this.id}`, // Use this.id instead of this.$route.params.id
+//       {
+//         productName: this.productName,
+//         image: this.image,
+//         description: this.description,
+//         price: this.price,
+//         category: this.category,
+//       }
+//     );
+//     // Reset data properties to empty strings if needed
+
+//     this.$router.push("/admin");
+//   } catch (err) {
+//     console.log(err);
+//   }
+// },
+
     async updateProduct() {
-  try {
-    await axios.put(
-      `https://mini-e-commerce.onrender.com/Products/${this.id}`, // Use this.id instead of this.$route.params.id
-      {
-        productName: this.productName,
-        image: this.image,
-        description: this.description,
-        price: this.price,
-        category: this.category,
+      try {
+        await axios.put(
+          `https://mini-e-commerce.onrender.com/Products/${this.$route.params.id}`,
+          {
+            productName: this.Product.productName,
+            image: this.Product.image,
+            description: this.Product.description,
+            price: this.Product.price,
+            category: this.Product.category,
+          }
+        );
+        this.productName = '';
+        this.image = '';
+        this.description = '';
+        this.price = '';
+        this.category = '';
+
+        this.$router.push("/admin");
+      } catch (err) {
+        console.log(err);
       }
-    );
-    // Reset data properties to empty strings if needed
-
-    this.$router.push("/admin");
-  } catch (err) {
-    console.log(err);
-  }
-},
-
-    // async updateProduct() {
-    //   try {
-    //     await axios.put(
-    //       `https://mini-e-commerce.onrender.com/Products/${this.$route.params.id}`,
-    //       {
-    //         productName: this.Product.productName,
-    //         image: this.Product.image,
-    //         description: this.Product.description,
-    //         price: this.Product.price,
-    //         category: this.Product.category,
-    //       }
-    //     );
-    //     this.productName = '';
-    //     this.image = '';
-    //     this.description = '';
-    //     this.price = '';
-    //     this.category = '';
-
-    //     this.$router.push("/admin");
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
+    },
   },
   props: ["id"],
   computed: {
