@@ -39,7 +39,7 @@
         required
        
         name="price"
-        v-model="Product.price"
+        v-model="price"
        
       />
       <label >Category</label>
