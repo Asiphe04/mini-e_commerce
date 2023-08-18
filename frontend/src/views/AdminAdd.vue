@@ -1,38 +1,38 @@
 <template>
   <div>
     <div class="container flex-container" >
-      <label for="productName">Name</label>
+      <label >Name</label>
       <input
         type="text"
         autocomplete="off"
         required
      
         name="productName"
-        v-model="Product.productName"
+        v-model="productName"
        
       />
-      <label for="image">Image</label>
+      <label >Image</label>
       <input
         type="text"
         autocomplete="off"
         required
       
         name="image"
-        v-model="Product.image"
+        v-model="image"
        
       />
-      <label for="description">Description</label>
+      <label >Description</label>
       <input
         type="text"
         autocomplete="off"
         required
        
         name="description"
-        v-model="Product.description"
+        v-model="description"
       
       />
 
-      <label for="price">Price</label>
+      <label >Price</label>
       <input
         type="text"
         autocomplete="off"
@@ -42,14 +42,14 @@
         v-model="Product.price"
        
       />
-      <label for="category">Category</label>
+      <label >Category</label>
       <input
         type="text"
         autocomplete="off"
         required
      
         name="category"
-        v-model="Product.category"
+        v-model="category"
        
       />
 
