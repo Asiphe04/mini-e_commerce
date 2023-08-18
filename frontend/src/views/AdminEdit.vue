@@ -74,26 +74,6 @@ export default {
     };
   },
   methods: {
-//     async updateProduct() {
-//   try {
-//     await axios.put(
-//       `https://mini-e-commerce.onrender.com/Products/${this.id}`, // Use this.id instead of this.$route.params.id
-//       {
-//         productName: this.productName,
-//         image: this.image,
-//         description: this.description,
-//         price: this.price,
-//         category: this.category,
-//       }
-//     );
-//     // Reset data properties to empty strings if needed
-
-//     this.$router.push("/admin");
-//   } catch (err) {
-//     console.log(err);
-//   }
-// },
-
     async updateProduct() {
       try {
         await axios.put(
