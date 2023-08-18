@@ -76,11 +76,11 @@ export default {
         await axios.post
           ('https://mini-e-commerce.onrender.com/Products/',
           {
-            productName: this.Product.productName,
-            image: this.Product.image,
-            description: this.Product.description,
-            price: this.Product.price,
-            category: this.Product.category,
+            productName: this.productName,
+            image: this.image,
+            description: this.description,
+            price: this.price,
+            category: this.category,
           })
         
         this.productName = '';
