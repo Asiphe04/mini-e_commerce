@@ -3,7 +3,7 @@
     <button class="btn-add">
       <router-link to="/admin/add"> Add Product </router-link>
     </button>
-    <table class="w-full text-center">
+    <table >
       <thead class="table-header">
         <tr>
           <th>ID</th>

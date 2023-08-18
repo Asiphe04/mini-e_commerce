@@ -12,7 +12,7 @@
     <td class="second-table-data">
       <div class="action">
         <button class="btn-edit">
-          <router-link :to="{ name: 'admin edit', params: { id: productID } }">
+          <router-link :to="{ name: 'admin edit', params: { id: Product.productID } }">
             Edit
           </router-link>
         </button>
@@ -25,12 +25,15 @@
 </template>
 
 <script>
+
+import axios from 'axios'
+
 export default {
   props: ["Product"],
   methods: {
-    async deleteProduct(id) {
+    async deleteProduct(productID) {
       try {
-        await axios.delete(`https://mini-e-commerce.onrender.com/${id}`);
+        await axios.delete(`https://mini-e-commerce.onrender.com/${productID}`);
         this.$store.dispatch("getProducts");
       } catch (err) {
         alert(err);

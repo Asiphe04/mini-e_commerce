@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container flex-container">
+    <div class="container flex-container" v-if="Product">
       <label for="productName">Name</label>
       <input
         type="text"
@@ -8,8 +8,8 @@
         required
         id="productName"
         name="productName"
-        v-model="productName"
-        :placeholder="productName"
+        v-model="Product.productName"
+        :placeholder="Product.productName"
       />
       <label for="image">Image</label>
       <input
@@ -18,7 +18,8 @@
         required
         id="image"
         name="image"
-        v-model="image"
+        v-model="Product.image"
+        :placeholder="Product.image"
       />
       <label for="description">Description</label>
       <input
@@ -27,17 +28,19 @@
         required
         id="description"
         name="description"
-        v-model="description"
+        v-model="Product.description"
+        :placeholder="Product.description"
       />
 
       <label for="price">Price</label>
       <input
-        type="number"
+        type="text"
         autocomplete="off"
         required
         id="price"
         name="price"
-        v-model="price"
+        v-model="Product.price"
+        :placeholder="Product.price"
       />
       <label for="category">Category</label>
       <input
@@ -46,7 +49,8 @@
         required
         id="category"
         name="category"
-        v-model="category"
+        v-model="Product.category"
+        :placeholder="Product.category"
       />
 
       <button @click="updateProduct" class="btn-submit">Submit</button>
@@ -73,24 +77,35 @@ export default {
         await axios.put(
           `https://mini-e-commerce.onrender.com/Products/${this.$route.params.id}`,
           {
-            productName: this.productName,
-            image: this.image,
-            description: this.description,
-            price: this.price,
-            category: this.category,
+            productName: this.Product.productName,
+            image: this.Product.image,
+            description: this.Product.description,
+            price: this.Product.price,
+            category: this.Product.category,
           }
         );
         this.productName = "";
+        this.image = "";
         this.description = "";
         this.price = "";
-        this.image = "";
+        this.category = "";
+
         this.$router.push("/admin");
       } catch (err) {
         console.log(err);
       }
     },
   },
-  props: ["Product"],
+  props: ["id"],
+  computed: {
+    Product() {
+      return this.$store.state.Product;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getProduct", this.id);
+    this.$store.dispatch("getProducts");
+  },
 };
 </script>
 

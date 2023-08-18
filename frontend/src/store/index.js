@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 const miniURL = "https://mini-e-commerce.onrender.com/";
+
 export default createStore({
   state: {
     Products: null,
@@ -16,14 +17,28 @@ export default createStore({
   },
   actions: {
     getProducts: async (context) => {
-      fetch(`${miniURL}Products`)
-        .then((res) => res.json())
-        .then((Products) => context.commit("setProducts", Products));
+      try {
+        const res = await fetch(`${miniURL}Products`);
+        if (!res.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const Products = await res.json();
+        context.commit("setProducts", Products);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     },
     getProduct: async (context, id) => {
-      fetch(`${miniURL}Products/` + id)
-        .then((res) => res.json())
-        .then((Product) => context.commit("setProduct", Product));
+      try {
+        const res = await fetch(`${miniURL}Products/` + id);
+        if (!res.ok) {
+          throw new Error("Failed to fetch product");
+        }
+        const Product = await res.json();
+        context.commit("setProduct", Product);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     },
   },
   modules: {},
