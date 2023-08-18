@@ -1,136 +1,88 @@
 <template>
-  
-<div class="">
-<table class="table">
-  <tr class="tr">
-    <th class="th-td">ProductName</th>
-    <th class="th-td">Image</th>
-    <th class="th-td">Description</th>
-    <th class="th-td">Price</th>
-    <th class="th-td">Category</th>
-    <th class="th-td">Delete</th>
-    <th class="th-td">Edit</th>
-  </tr>
-  <tr class="tr">
-    <!-- <td>{{admin.productName}}</td>
-    <td class="th-td">{{admin.image}}</td>
-    <td class="th-td">{{admin.description}}</td>
-    <td class="th-td">{{admin.price}}</td>
-    <td class="th-td">{{admin.category}}</td>
-    <td class="th-td">{{admin.delete}}</td>
-    <td class="th-td">{{admin.edit}}</td> -->
-    <td class="th-td">admin.productName</td>
-    <td class="th-td">admin.image</td>
-    <td class="th-td">admin.description</td>
-    <td class="th-td">admin.price</td>
-    <td class="th-td">admin.category</td>
-    <td class="th-td">admin.delete</td>
-    <td class="th-td">admin.edit</td>
-  </tr>
-</table>
-
-</div>
-  
+  <div class="container">
+    <button class="btn-add">
+      <router-link to="/admin/add"> Add Product </router-link>
+    </button>
+    <table class="w-full text-center">
+      <thead class="table-header">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody class="table-body" v-if="Products">
+        <AdminComp
+          v-for="Product of Products"
+          :key="Product.productID"
+          :Product="Product"
+    
+          />
+      </tbody>
+      <tbody v-else>
+        ERROR 404
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
+import AdminComp from "@/components/AdminComp.vue";
+
+export default {
+  components: {
+    AdminComp,
+  },
+  computed: {
+    Products() {
+      return this.$store.state.Products;
+    },
+  },
+  mounted() {
+    this.$store.dispatch("getProducts");
+  },
+};
 </script>
 
-
-
-<style>
-
-.table {
-  /* border-radius: 50px; */
-  margin: 10px;
-  border-collapse: collapse;
-  width: 60%;
-  margin-left: 320px;
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
 }
 
-.tr {
-  background-color: blue;
-}
-
-.th-td {
-  /* border: 2px solid black; */
-  margin: 10px;
-  border-radius: 10px;
+.btn-add {
+  margin: 5px;
+  margin-left: auto;
+  background-color: skyblue;
+  border: 1px solid #000000;
   text-align: center;
-  padding: 8px;
+  border-radius: 0.25rem;
+
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #000000;
+}
+
+.table-header th {
+  font-size: 1rem;
+  border-bottom: 2px solid #000000;
+}
+
+.table-body td {
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #000000;
+}
+
+.table-body tr:last-child td {
+  border-bottom: none;
+}
 </style>
-
-
-
-
-
-
-
-
-
-<!-- <div class="container" style="margin-top: 50px">
-  &lt if (messages.success) { %>
-  <div class="alert alert-success" role="alert">&lt- messages.success %></div>
-  &lt } %> &lt if (messages.error) { %>
-  <div class="alert alert-danger" role="alert">&lt- messages.error %></div>
-  &lt } %>
-
-  <div class="card">
-    <div class="card-header">
-      <ul class="nav nav-pills w-100">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Users</a>
-        </li>
-        <li class="nav-item ms-auto">
-          <a class="nav-link active" href="/users/add">Add User</a>
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      &lt if(data.length) { %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Position</th>
-            <th scope="col" style="width: 200px">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          &lt data.forEach((user, index) => { %>
-          <tr>
-            <th scope="row">&lt= index + 1 %></th>
-            <td>&lt= user.name %></td>
-            <td>&lt= user.email %></td>
-            <td>&lt= user.position %></td>
-            <td>
-              <a
-                class="btn btn-success edit"
-                href="../users/edit/<%= user.id %>"
-                >Edit</a
-              >
-              <a
-                class="btn btn-danger delete"
-                onclick="return confirm('Are you sure you want to delete this record?')"
-                href="../users/delete/<%= user.id %>"
-                >Delete</a
-              >
-            </td>
-          </tr>
-          v }); %>
-        </tbody>
-      </table>
-      &lt } else { %>
-      <p class="text-center">No users found!</p>
-      &lt } %>
-    </div>
-  </div>
-
-  
-</div> -->
-
-
