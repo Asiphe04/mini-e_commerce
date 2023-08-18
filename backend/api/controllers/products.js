@@ -52,6 +52,9 @@ const removeProduct = (req, res) => {
   });
 };
 
+
+
+
 // update a product
 const updateProductInfo = (req, res) => {
   const productId = req.params.productID;
