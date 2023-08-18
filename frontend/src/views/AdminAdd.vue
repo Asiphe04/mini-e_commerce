@@ -90,9 +90,9 @@ export default {
         this.category = '';
 
         this.$router.push("/admin");
-      } catch (err) {
-        console.log(err);
-      }
+      } catch ( err ){
+              alert( err )
+            }
     },
   },
 }

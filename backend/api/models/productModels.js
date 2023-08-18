@@ -30,12 +30,12 @@ const getProductByID = (id, result) => {
 
 //Add a new product
 const insertProduct = (data, result) => {
-    db.query('INSERT INTO Products SET ?',data,(err, results) =>{
+    db.query('INSERT INTO Products SET ?;',[data],(err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
         } else{
-            result(null,results[0]);
+            result(null,results);
         }
     })
 }
