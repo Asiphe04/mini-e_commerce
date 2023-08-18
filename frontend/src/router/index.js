@@ -23,6 +23,11 @@ const routes = [
     component: () => import("../views/AdminEdit.vue"),
     props: true,
   },
+  {
+    path: '/admin/add',
+    name: 'admin add',
+    component: () => import('../views/AdminAdd.vue')
+  },
 ];
 
 const router = createRouter({

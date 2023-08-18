@@ -1,32 +1,32 @@
 <template>
   <div>
-    <div class="container flex-container" v-if="Product">
+    <div class="container flex-container" >
       <label for="productName">Name</label>
       <input
         type="text"
         autocomplete="off"
         required
-        id="productName"
+     
         name="productName"
         v-model="Product.productName"
-        :placeholder="Product.productName"
+       
       />
       <label for="image">Image</label>
       <input
         type="text"
         autocomplete="off"
         required
-        id="image"
+      
         name="image"
         v-model="Product.image"
-        :placeholder="Product.image"
+       
       />
       <label for="description">Description</label>
       <input
         type="text"
         autocomplete="off"
         required
-        id="description"
+       
         name="description"
         v-model="Product.description"
       
@@ -37,7 +37,7 @@
         type="text"
         autocomplete="off"
         required
-        id="price"
+       
         name="price"
         v-model="Product.price"
        
@@ -47,7 +47,7 @@
         type="text"
         autocomplete="off"
         required
-        id="category"
+     
         name="category"
         v-model="Product.category"
        
@@ -73,16 +73,16 @@ export default {
       methods: {
     async addProduct() {
       try {
-        await axios.put(
-          `https://mini-e-commerce.onrender.com/Products/${this.$route.params.id}`,
+        await axios.post
+          ('https://mini-e-commerce.onrender.com/Products/',
           {
             productName: this.Product.productName,
             image: this.Product.image,
             description: this.Product.description,
             price: this.Product.price,
             category: this.Product.category,
-          }
-        );
+          })
+        
         this.productName = '';
         this.image = '';
         this.description = '';
