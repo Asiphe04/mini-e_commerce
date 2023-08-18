@@ -31,9 +31,9 @@ import axios from 'axios'
 export default {
   props: ["Product"],
   methods: {
-    async deleteProduct(productID) {
+    async deleteProduct(id) {
       try {
-        await axios.delete(`https://mini-e-commerce.onrender.com/${productID}`);
+        await axios.delete(`https://mini-e-commerce.onrender.com/${id}`);
         this.$store.dispatch("getProducts");
       } catch (err) {
         alert(err);

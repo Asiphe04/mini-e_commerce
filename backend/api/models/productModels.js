@@ -2,8 +2,8 @@
 const db = require('../config/db')
 
 //Get products
-const getAllProducts = (result) =>{
-    db.query('SELECT * FROM Products', (err, results) =>{
+const getProducts = (result) =>{
+    db.query('SELECT productID, productName, image, description, price , category FROM Products', (err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
@@ -14,9 +14,9 @@ const getAllProducts = (result) =>{
 }
 //Get a single product
 
-const getProductByID = (productID, result) => {
-    const query = 'SELECT * FROM Products WHERE productID = ?';
-    db.query(query, [productID], (err, results) => {
+const getProductByID = (id, result) => {
+    const query = 'SELECT productID, productName, image, description, price , category FROM Products WHERE productID = ?';
+    db.query(query, [id], (err, results) => {
       if (err) {
         console.log('Error executing query:', query);
         console.log(err);
@@ -30,7 +30,7 @@ const getProductByID = (productID, result) => {
 
 //Add a new product
 const insertProduct = (data, result) => {
-    db.query('INSERT INTO products SET ?',data,(err, results) =>{
+    db.query('INSERT INTO Products SET ?',data,(err, results) =>{
         if (err){
             console.log(err);
             result(err, null);
@@ -41,20 +41,21 @@ const insertProduct = (data, result) => {
 }
 
 // Update an existing product
-const updateProduct = (productId, data, result) => {
-    db.query('UPDATE products SET ? WHERE productID = ?', [data, productId], (err, results) => {
+const updateProductByID = (id, data, result) => {
+    db.query('UPDATE Products SET productName = ?, image = ?, description = ?, price = ?, category = ? WHERE productID = ?', [data.productName, data.image, data.description, data.price, data.category, id], (err, results) => {
         if (err) {
             console.log(err);
-            result(err, null);
+            result({ error: "Failed to update product." }, null);
         } else {
             result(null, results);
         }
+        
     });
 };                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 // Delete a product
-const deleteProduct = (productId, result) => {
-    db.query('DELETE FROM products WHERE productID = ?', productId, (err, results) => {
+const deleteProductByID = (id, result) => {
+    db.query('DELETE FROM Products WHERE productID = ?', [id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);
@@ -66,9 +67,9 @@ const deleteProduct = (productId, result) => {
 
 
 module.exports = {
-    getAllProducts, 
+    getProducts, 
     getProductByID, 
     insertProduct,
-    updateProduct,
-    deleteProduct
+    updateProductByID,
+    deleteProductByID
 }

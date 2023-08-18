@@ -3,7 +3,7 @@
         <div class="nav-container">
           <img src="https://i.postimg.cc/8zpsss39/fg.jpg" class="img-nav" alt="">
     <router-link class="nav-link" to="/">Home</router-link> 
-    <router-link class="nav-link" to="/products">Products</router-link> 
+    <router-link class="nav-link" to="/Products">Products</router-link> 
     <router-link class="nav-link" to="/admin">Admin</router-link> 
     </div>
     </nav>

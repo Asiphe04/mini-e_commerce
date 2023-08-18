@@ -3,27 +3,27 @@ const express = require("express");
 const router = express.Router();
 // import functions from controller
 const {
-  allProducts,
-  showAProduct,
+  showProducts,
+  showProductByID,
   createProduct,
-  removeProduct,
-  updateProductInfo
+  deleteProduct,
+  updateProduct
 } = require("../controllers/products")
 
 //get all products
-router.get("/products", allProducts);
+router.get("/Products", showProducts);
 
 //get single product
-router.get("/products/:productID", showAProduct);
+router.get("/Products/:id", showProductByID);
 
 //create a new product
-router.post("/products", createProduct);
+router.post("/Products", createProduct);
 
 // Delete a product
-router.delete("/products/delete/:productID", removeProduct);
+router.delete("/Products/:id", deleteProduct);
 
 // Update a product
-router.put("/products/update/:productID", updateProductInfo);
+router.put("/Products/:id", updateProduct);
 
 // export default router
 module.exports = router;

@@ -11,7 +11,7 @@
 </template>
 <script>
 export default{
-       props: ["product"]
+       props: ["Product"]
    }
 </script>
 <style>
