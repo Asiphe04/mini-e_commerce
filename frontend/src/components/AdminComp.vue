@@ -33,7 +33,7 @@ export default {
   methods: {
     async deleteProduct(id) {
       try {
-        await axios.delete(`https://mini-e-commerce.onrender.com/${id}`);
+        await axios.delete(`https://mini-e-commerce.onrender.com/Products/${id}`);
         this.$store.dispatch("getProducts");
       } catch (err) {
         alert(err);

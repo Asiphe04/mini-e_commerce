@@ -47,7 +47,7 @@ const deleteProduct = (req, res) => {
     if (err) {
       res.send(err);
     } else {
-      res.json({ message: "Product deleted successfully" });
+      res.json(results);
     }
   });
 };
